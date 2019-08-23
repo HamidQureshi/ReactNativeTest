@@ -2,12 +2,16 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator, cre
 import HomeScreen from './screens/HomeScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import TabScreen from './screens/TabScreen'
+import WelcomeScreen from './screens/WelcomeScreen'
+import DashboardScreen from './screens/DashboardScreen'
 import { Ionicons } from '@expo/vector-icons';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-
-
+import {
+  createSwitchNavigator,
+  createDrawerNavigator,
+} from 'react-navigation';
 
 const Stack1 = createStackNavigator(
   {
@@ -77,6 +81,64 @@ const TabNavigator = createMaterialBottomTabNavigator({
     initialRouteName: "Tab2Header"
   });
 
+
+const DashboardStackNavigator = createStackNavigator(
+  {
+    DashboardNavigator: DashboardScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (
+          <Ionicons
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        )
+      };
+    }
+  }
+);
+
+const WelcomeStackNavigator = createStackNavigator(
+  {
+    WelcomeNavigator: WelcomeScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (
+          <Ionicons
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        )
+      };
+    }
+  }
+);
+
+const AppDrawerNavigator = createDrawerNavigator({
+  Dashboard: {
+    screen: DashboardStackNavigator
+  },
+  Welcome: {
+    screen: WelcomeStackNavigator
+  },
+});
+
+const AppSwitchNavigator = createSwitchNavigator({
+  Dashboard: { screen: AppDrawerNavigator },
+  Welcome: { screen: WelcomeScreen },
+
+});
+
+
+// export default createAppContainer(AppSwitchNavigator);
 export default createAppContainer(TabNavigator);
 
 

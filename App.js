@@ -1,9 +1,11 @@
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation';
-import HomeScreen from './screens/HomeScreen'
-import ProfileScreen from './screens/ProfileScreen'
-import TabScreen from './screens/TabScreen'
-import WelcomeScreen from './screens/WelcomeScreen'
-import DashboardScreen from './screens/DashboardScreen'
+import HomeScreen from './src/screens/HomeScreen'
+import ProfileScreen from './src/screens/ProfileScreen'
+import TabScreen from './src/screens/TabScreen'
+import WelcomeScreen from './src/screens/WelcomeScreen'
+import DashboardScreen from './src/screens/DashboardScreen'
+import LoginScreen from './src/screens/LoginScreen';
+import SignUpScreen from './src/screens/SignupScreen';
 import { Ionicons } from '@expo/vector-icons';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
@@ -15,18 +17,20 @@ import {
 
 const Stack1 = createStackNavigator(
   {
+    Login: { screen:LoginScreen},
+    Signup: {screen: SignUpScreen},
     Home: { screen: HomeScreen },
-    Profile: ProfileScreen,
+    Profile: {screen : ProfileScreen},
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Login"
   }
 );
 
 const Stack2 = createStackNavigator(
   {
     Home: { screen: HomeScreen },
-    Tab: TabScreen
+    Tab: { screen:TabScreen}
   },
   {
     initialRouteName: "Tab"
@@ -84,7 +88,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
 
 const DashboardStackNavigator = createStackNavigator(
   {
-    DashboardNavigator: DashboardScreen
+    DashboardNavigator: { screen:DashboardScreen}
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
@@ -104,7 +108,7 @@ const DashboardStackNavigator = createStackNavigator(
 
 const WelcomeStackNavigator = createStackNavigator(
   {
-    WelcomeNavigator: WelcomeScreen
+    WelcomeNavigator: { screen:WelcomeScreen}
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
@@ -139,7 +143,9 @@ const AppSwitchNavigator = createSwitchNavigator({
 
 
 // export default createAppContainer(AppSwitchNavigator);
-export default createAppContainer(TabNavigator);
+// export default createAppContainer(TabNavigator);
+export default createAppContainer(Stack1);
+
 
 
 

@@ -25,16 +25,16 @@ export default class HomeScreen extends Component {
         })
     }
 
-    static navigationOptions = {  
-        title: 'Home',  
-        headerStyle: {  
-            backgroundColor: '#f4511e',  
-        },  
+    static navigationOptions = {
+        title: 'Home',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
         //headerTintColor: '#0ff',  
-        headerTitleStyle: {  
-            fontWeight: 'bold',  
-        },  
-    }; 
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
 
     render() {
         let imagePath = { uri: 'https://imagesvc.timeincapp.com/v3/fan/image?url=https://apptrigger.com/files/2018/11/Detective-Pikachu-screenshot.jpg&c=sc&w=850&h=560' };
@@ -64,7 +64,7 @@ export default class HomeScreen extends Component {
                         otherParam: '101',
                     })}
                 />
-  <Button
+                <Button
                     title="Go to Tab Screen"
                     onPress={() => this.props.navigation.navigate('Tab')}
                 />

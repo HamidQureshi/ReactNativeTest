@@ -6,6 +6,7 @@ import WelcomeScreen from './src/screens/WelcomeScreen'
 import DashboardScreen from './src/screens/DashboardScreen'
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignupScreen';
+import FileListScreen from './src/screens/FileListScreen';
 import { Ionicons } from '@expo/vector-icons';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
@@ -14,16 +15,19 @@ import {
   createSwitchNavigator,
   createDrawerNavigator,
 } from 'react-navigation';
+import FileUploadScreen from './src/screens/FileUploadScreen';
 
 const Stack1 = createStackNavigator(
   {
     Login: { screen:LoginScreen},
-    Signup: {screen: SignUpScreen},
-    Home: { screen: HomeScreen },
-    Profile: {screen : ProfileScreen},
+    // Signup: {screen: SignUpScreen},
+    Signup: {screen: FileListScreen},
+    FileUpload: {screen: FileUploadScreen}
+    // Home: { screen: HomeScreen },
+    // Profile: {screen : ProfileScreen},
   },
   {
-    initialRouteName: "Login"
+    initialRouteName: "FileUpload"
   }
 );
 

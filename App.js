@@ -7,6 +7,7 @@ import DashboardScreen from './src/screens/DashboardScreen'
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignupScreen';
 import FileUploadScreen from './src/screens/FileUploadScreen';
+import FileListScreen from './src/screens/FileListScreen';
 import { Ionicons } from '@expo/vector-icons';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
@@ -16,6 +17,29 @@ import {
   createDrawerNavigator,
 } from 'react-navigation';
 
+// const Stack1 = createStackNavigator(
+//   {
+//     Login: { screen: LoginScreen },
+//     // Signup: {screen: SignUpScreen},
+//     Signup: { screen: FileListScreen },
+//     FileUpload: { screen: FileUploadScreen }
+//     // Home: { screen: HomeScreen },
+//     // Profile: {screen : ProfileScreen},
+//   },
+//   {
+//     initialRouteName: "FileUpload"
+//   }
+// );
+
+// const Stack2 = createStackNavigator(
+//   {
+//     Home: { screen: HomeScreen },
+//     Tab: { screen:TabScreen}
+//   },
+//   {
+//     initialRouteName: "Tab"
+//   }
+// );
 
 // const TabNavigator = createMaterialBottomTabNavigator({
 //   // const TabNavigator = createMaterialTopTabNavigator({
@@ -138,7 +162,10 @@ const AppDrawerNavigator = createDrawerNavigator({
   // FileDownload: {
   //   screen: WelcomeStackNavigator
   // },
-});
+},
+  {
+    initialRouteName: "FileUpload"
+  });
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
